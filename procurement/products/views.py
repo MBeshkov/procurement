@@ -15,7 +15,7 @@ class ProductListApiView(APIView):
         '''
         List all the product items for given requested user
         '''
-        products = Product.objects.filter()
+        products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

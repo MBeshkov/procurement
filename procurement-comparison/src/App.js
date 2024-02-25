@@ -1,7 +1,38 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import ProductList from './ProductList';
 
 function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
+            <li>
+              <Link to="/products">All Products</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <hr />
+
+        <Routes>
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/products" element={<ProductList />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+function SearchPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
