@@ -404,4 +404,61 @@ button:hover {
     margin-top: 10px;
   }
 
+  .product-details-container {
+    text-align: center;
+  }
+  
+  .do-better-button {
+    padding: 15px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .do-better-button:hover {
+    background-color: #45a049;
+  }
+  
+  .recommended-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .search-page-container {
+    text-align: center;
+  }
+  
+  .search-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 15px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
   

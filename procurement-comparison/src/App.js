@@ -76,9 +76,9 @@ function SearchPage() {
   };
 
   return (
-    <div>
+    <div className="search-page-container">
       <h1>Product Search</h1>
-      <div>
+      <div className="search-bar-container">
         <input
           type="text"
           placeholder="Enter search term"

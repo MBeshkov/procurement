@@ -43,17 +43,18 @@ function ProductDetails() {
   };
 
   return (
-    <div>
+    <div className="product-details-container">
       <h2>Product Details</h2>
       <p><strong>Name:</strong> {product.name}</p>
       <p><strong>Eco-score:</strong> {product.score}</p>
       <p><strong>Materials:</strong> {product.materials}</p>
       <p><strong>Category:</strong> {product.category}</p>
-      {/* Add more details as needed */}
 
-      <button onClick={handleSearchByCategory}>Can I do better?</button>
+      <button className="do-better-button" onClick={handleSearchByCategory}>
+        Can I do better?
+      </button>
 
-      <div>
+      <div className="recommended-container">
         <h3>Recommended Alternatives</h3>
         <div className="search-results">
           {searchResults.map((result, index) => (
@@ -63,16 +64,14 @@ function ProductDetails() {
               </div>
               <div className="result-details">
                 <strong>{result.name}</strong>
-                <p>Ecoscore: {result.ecoscore}</p>
+                <p>Eco-score: {result.ecoscore}</p>
                 <p>Materials: {result.packaging}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-
     </div>
-        
   );
 }
 
