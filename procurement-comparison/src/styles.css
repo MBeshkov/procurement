@@ -13,7 +13,7 @@ body {
   }
   
   nav {
-    background-color: #333;
+    background-color: #023b0d;
     color: white;
     padding: 10px;
   }
@@ -57,16 +57,47 @@ body {
   }
   
   .search-results {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .search-result {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
     margin-top: 20px;
+    width: calc(33.33% - 20px); /* Calculate width for three columns with margin */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
   
-  .search-results ul {
-    list-style: none;
-    padding: 0;
+  
+  .thumbnail {
+    width: 100%; /* Set width to 100% to use the original size */
+    max-height: 100px; /* Set a max height for consistency */
+    object-fit: contain; /* Maintain aspect ratio */
+    border-radius: 5px;
   }
   
-  .search-results li {
-    margin-bottom: 10px;
+  .result-details {
+    flex: 1;
+    margin-top: 10px;
+  }
+  
+  .thumbnail-container {
+    flex: 1;
+  }
+  
+  .thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .result-details {
+    flex: 1;
+    margin-top: 10px;
   }
 
   .home-buttons {

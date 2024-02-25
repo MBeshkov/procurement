@@ -55,12 +55,13 @@ function SearchPage() {
 
   const handleSearch = async () => {
     try {
-      const apiUrl = `https://uk.openfoodfacts.org/api/v2/search?categories_tags=${searchTerm}&fields=categories,code,product_name,ecoscore_score,packaging&sort_by=ecoscore_score&page_size=3&json=1`;
+      const apiUrl = `https://uk.openfoodfacts.org/api/v2/search?categories_tags=${searchTerm}&fields=image_front_small_url,categories,code,product_name,ecoscore_score,packaging&sort_by=ecoscore_score&page_size=3&json=1`;
 
       const response = await axios.get(apiUrl);
 
       // Extract relevant information from the API response
       const results = response.data.products.map(product => ({
+        img_url: product.image_front_small_url,
         code: product.code,
         categories: product.categories,
         name: product.product_name,
@@ -88,16 +89,25 @@ function SearchPage() {
       </div>
       <div>
         <h2>Top 3 items with the highest ecoscore:</h2>
-        <ul>
+        <div className="search-results">
           {searchResults.map((result, index) => (
-            <li key={index}>
-              <strong>{result.name}</strong> - Ecoscore: {result.ecoscore} - Packaging: {result.packaging}
-            </li>
+            <div key={index} className="search-result">
+              <div className="thumbnail-container">
+                {result.img_url && <img src={result.img_url} alt={`Thumbnail ${index}`} className="thumbnail" />}
+              </div>
+              <div className="result-details">
+                <strong>{result.name}</strong>
+                <p>Ecoscore: {result.ecoscore}</p>
+                <p>Materials: {result.packaging}</p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
+
+
 }
 
 export default App;
