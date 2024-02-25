@@ -8,14 +8,14 @@ from rest_framework import permissions
 
 class ProductListApiView(APIView):
     # add permission to check if user is authenticated
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     # 1. List all
     def get(self, request, *args, **kwargs):
         '''
         List all the product items for given requested user
         '''
-        products = Product.objects.filter(user = request.user.id)
+        products = Product.objects.filter()
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -27,8 +27,8 @@ class ProductListApiView(APIView):
         data = {
             'name': request.data.get('name'), 
             'score': request.data.get('score'), 
-            'score': request.data.get('category'), 
-            'score': request.data.get('materials'), 
+            'category': request.data.get('category'), 
+            'materials': request.data.get('materials'), 
             'user': request.user.id
         }
         serializer = ProductSerializer(data=data)
@@ -40,14 +40,14 @@ class ProductListApiView(APIView):
     
 class ProductDetailApiView(APIView):
 # add permission to check if user is authenticated
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
-    def get_object(self, product_id, user_id):
+    def get_object(self, product_id):
         '''
         Helper method to get the object with given product_id, and user_id
         '''
         try:
-            return Product.objects.get(id=product_id, user = user_id)
+            return Product.objects.get(id=product_id)
         except Product.DoesNotExist:
             return None
 
@@ -56,7 +56,7 @@ class ProductDetailApiView(APIView):
         '''
         Retrieves the Product with given product_id
         '''
-        product_instance = self.get_object(product_id, request.user.id)
+        product_instance = self.get_object(product_id)
         if not product_instance:
             return Response(
                 {"res": "Object with product id does not exists"},
@@ -71,7 +71,7 @@ class ProductDetailApiView(APIView):
         '''
         Updates the product item with given product_id if exists
         '''
-        product_instance = self.get_object(product_id, request.user.id)
+        product_instance = self.get_object(product_id)
         if not product_instance:
             return Response(
                 {"res": "Object with product id does not exists"}, 
@@ -80,8 +80,8 @@ class ProductDetailApiView(APIView):
         data = {
             'name': request.data.get('name'), 
             'score': request.data.get('score'), 
-            'score': request.data.get('category'), 
-            'score': request.data.get('materials'),
+            'category': request.data.get('category'), 
+            'materials': request.data.get('materials'),
             'user': request.user.id
         }
         serializer = ProductSerializer(instance = product_instance, data=data, partial = True)
@@ -95,7 +95,7 @@ class ProductDetailApiView(APIView):
         '''
         Deletes the product item with given product_id if exists
         '''
-        product_instance = self.get_object(product_id, request.user.id)
+        product_instance = self.get_object(product_id)
         if not product_instance:
             return Response(
                 {"res": "Object with product id does not exists"}, 
