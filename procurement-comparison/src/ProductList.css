@@ -1,0 +1,10 @@
+/* ProductList.css */
+
+.centered-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* This will make the container take the full height of the viewport */
+  }
+  

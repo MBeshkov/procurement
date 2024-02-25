@@ -1,6 +1,9 @@
+// ProductList.js
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './ProductList.css'; // Import the CSS file
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -13,13 +16,13 @@ function ProductList() {
   }, []);
 
   return (
-    <div>
+    <div className="centered-list"> {/* Apply the CSS class to center the content */}
       <h2>All Products</h2>
       <ul>
         {products.map(product => (
           <li key={product.code}>
             <Link to={`/products/${product.code}`}>
-              <strong>{product.name}</strong> - Ecoscore: {product.score}
+              <strong>{product.name}</strong> - Eco-score: {product.score}
             </Link>
           </li>
         ))}

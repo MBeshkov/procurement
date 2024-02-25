@@ -9,6 +9,7 @@ function ProductDetails() {
   const { code } = useParams();
   const [product, setProduct] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
+  const [showRecommended, setShowRecommended] = useState(false); // State to track button click
 
   useEffect(() => {
     axios.get(`http://localhost:8000/products/api/${code}`)
@@ -37,6 +38,7 @@ function ProductDetails() {
       }));
 
       setSearchResults(results);
+      setShowRecommended(true); // Set state to true after fetching data
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -54,23 +56,25 @@ function ProductDetails() {
         Can I do better?
       </button>
 
-      <div className="recommended-container">
-        <h3>Recommended Alternatives</h3>
-        <div className="search-results">
-          {searchResults.map((result, index) => (
-            <div key={index} className="search-result">
-              <div className="thumbnail-container">
-                {result.img_url && <img src={result.img_url} alt={`Thumbnail ${index}`} className="thumbnail" />}
+      {showRecommended && ( // Render only if showRecommended is true
+        <div className="recommended-container">
+          <h3>Recommended Alternatives</h3>
+          <div className="search-results">
+            {searchResults.map((result, index) => (
+              <div key={index} className="search-result">
+                <div className="thumbnail-container">
+                  {result.img_url && <img src={result.img_url} alt={`Thumbnail ${index}`} className="thumbnail" />}
+                </div>
+                <div className="result-details">
+                  <strong>{result.name}</strong>
+                  <p>Eco-score: {result.ecoscore}</p>
+                  <p>Materials: {result.packaging}</p>
+                </div>
               </div>
-              <div className="result-details">
-                <strong>{result.name}</strong>
-                <p>Eco-score: {result.ecoscore}</p>
-                <p>Materials: {result.packaging}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

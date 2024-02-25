@@ -8,7 +8,7 @@ html, body {
   
   body {
     background: linear-gradient(rgb(125, 234, 240), 10%, rgb(226, 213, 234));
-    /* background-size: 400% 400%; */
+    background-size: 150% 150%;
   }
   
   @keyframes gradient {
