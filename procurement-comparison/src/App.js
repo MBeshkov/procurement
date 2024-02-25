@@ -71,7 +71,7 @@ function SearchPage() {
         <ul>
           {searchResults.map((result, index) => (
             <li key={index}>
-              <strong>{result.name}</strong> - Ecoscore: {result.ecoscore}
+              <strong>{result.name}</strong> - Ecoscore: {result.score}
             </li>
           ))}
         </ul>

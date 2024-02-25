@@ -16,8 +16,8 @@ function ProductList() {
       <h2>All Products</h2>
       <ul>
         {products.map(product => (
-          <li key={product.id}>
-            <strong>{product.name}</strong> - Ecoscore: {product.ecoscore}
+          <li key={product.code}>
+            <strong>{product.name}</strong> - Ecoscore: {product.score}
           </li>
         ))}
       </ul>
