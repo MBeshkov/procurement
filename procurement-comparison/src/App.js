@@ -12,10 +12,10 @@ function Home() {
         <h1>Let's clean your supply together!</h1>
         <div className="home-buttons">
           <Link to="/products">
-            <button className="square-button">All Products</button>
+            <button className="square-button">Current Commitments</button>
           </Link>
           <Link to="/search">
-            <button className="square-button">Search</button>
+            <button className="square-button">Product Database</button>
           </Link>
         </div>
         <div className="background-image"></div>
@@ -77,7 +77,7 @@ function SearchPage() {
 
   return (
     <div>
-      <h1>Open Food Facts Search</h1>
+      <h1>Product Search</h1>
       <div>
         <input
           type="text"
@@ -88,7 +88,7 @@ function SearchPage() {
         <button onClick={handleSearch}>Search</button>
       </div>
       <div>
-        <h2>Top 3 items with the highest ecoscore:</h2>
+        <h2>Top 3 items with the highest eco-score:</h2>
         <div className="search-results">
           {searchResults.map((result, index) => (
             <div key={index} className="search-result">
@@ -97,7 +97,7 @@ function SearchPage() {
               </div>
               <div className="result-details">
                 <strong>{result.name}</strong>
-                <p>Ecoscore: {result.ecoscore}</p>
+                <p>Eco-score: {result.ecoscore}</p>
                 <p>Materials: {result.packaging}</p>
               </div>
             </div>
