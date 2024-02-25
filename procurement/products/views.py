@@ -26,6 +26,7 @@ class ProductListApiView(APIView):
         Create the Product with given product data
         '''
         data = {
+            'code': request.data.get('code'),
             'name': request.data.get('name'), 
             'score': request.data.get('score'), 
             'category': request.data.get('category'), 
@@ -43,21 +44,21 @@ class ProductDetailApiView(APIView):
 # add permission to check if user is authenticated
     # permission_classes = [permissions.IsAuthenticated]
 
-    def get_object(self, product_id):
+    def get_object(self, code):
         '''
-        Helper method to get the object with given product_id, and user_id
+        Helper method to get the object with given code, and user_id
         '''
         try:
-            return Product.objects.get(id=product_id)
+            return Product.objects.get(code=code)
         except Product.DoesNotExist:
             return None
 
     # 3. Retrieve
-    def get(self, request, product_id, *args, **kwargs):
+    def get(self, request, code, *args, **kwargs):
         '''
-        Retrieves the Product with given product_id
+        Retrieves the Product with given code
         '''
-        product_instance = self.get_object(product_id)
+        product_instance = self.get_object(code)
         if not product_instance:
             return Response(
                 {"res": "Object with product id does not exists"},
@@ -68,17 +69,18 @@ class ProductDetailApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # 4. Update
-    def put(self, request, product_id, *args, **kwargs):
+    def put(self, request, code, *args, **kwargs):
         '''
-        Updates the product item with given product_id if exists
+        Updates the product item with given code if exists
         '''
-        product_instance = self.get_object(product_id)
+        product_instance = self.get_object(code)
         if not product_instance:
             return Response(
                 {"res": "Object with product id does not exists"}, 
                 status=status.HTTP_400_BAD_REQUEST
             )
         data = {
+            'code': request.data.get('code'),
             'name': request.data.get('name'), 
             'score': request.data.get('score'), 
             'category': request.data.get('category'), 
@@ -92,11 +94,11 @@ class ProductDetailApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # 5. Delete
-    def delete(self, request, product_id, *args, **kwargs):
+    def delete(self, request, code, *args, **kwargs):
         '''
-        Deletes the product item with given product_id if exists
+        Deletes the product item with given code if exists
         '''
-        product_instance = self.get_object(product_id)
+        product_instance = self.get_object(code)
         if not product_instance:
             return Response(
                 {"res": "Object with product id does not exists"}, 
