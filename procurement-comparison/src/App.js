@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import './app-background.css';
 import reportWebVitals from './reportWebVitals';
 import './global-styles.css';
+import ImagePage from './ImagePage';
 
 function Home() {
   return (
@@ -37,6 +38,9 @@ function App() {
             <li>
               <Link to="/">Home</Link>
             </li>
+            <li>
+              <Link to="/images">Missions</Link>
+            </li>
           </ul>
         </nav>
 
@@ -47,6 +51,7 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:code" element={<ProductDetails />} />
+          <Route path="/images" element={<ImagePage />} />
         </Routes>
       </div>
     </Router>
