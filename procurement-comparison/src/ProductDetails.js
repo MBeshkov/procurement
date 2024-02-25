@@ -21,7 +21,7 @@ function ProductDetails() {
 
   const handleSearchByCategory = async () => {
     try {
-      const apiUrl = `https://uk.openfoodfacts.org/api/v2/search?categories_tags=${product.category}&fields=product_name,ecoscore_score&sort_by=ecoscore_score&page_size=3&json=1`;
+      const apiUrl = `https://uk.openfoodfacts.org/api/v2/search?categories_tags=${product.category}&fields=product_name,ecoscore_score,packaging&sort_by=ecoscore_score&page_size=3&json=1`;
 
       const response = await axios.get(apiUrl);
 
@@ -29,6 +29,7 @@ function ProductDetails() {
       const results = response.data.products.map(product => ({
         name: product.product_name,
         ecoscore: product.ecoscore_score,
+        packaging: product.packaging,
       }));
 
       setSearchResults(results);
@@ -53,12 +54,12 @@ function ProductDetails() {
         <ul>
           {searchResults.map((result, index) => (
             <li key={index}>
-              <strong>{result.name}</strong> - Ecoscore: {result.ecoscore}
+              <strong>{result.name}</strong> - Ecoscore: {result.ecoscore} - Packaging: {result.packaging}
             </li>
           ))}
         </ul>
       </div>
-      
+
     </div>
         
   );
