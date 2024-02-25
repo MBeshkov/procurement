@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
 import './styles.css';
+import ReactDOM from 'react-dom';
+import './app-background.css';
+import reportWebVitals from './reportWebVitals';
+import './global-styles.css';
 
 function Home() {
   return (
@@ -109,5 +113,14 @@ function SearchPage() {
 
 
 }
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+reportWebVitals();
 
 export default App;
