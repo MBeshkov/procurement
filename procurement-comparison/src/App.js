@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ProductList from './ProductList';
+import ProductDetails from './ProductDetails';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/search" element={<SearchPage />} />
           <Route path="/products" element={<ProductList />} />
+          <Route path="/products/:code" element={<ProductDetails />} />
         </Routes>
       </div>
     </Router>
@@ -71,7 +73,7 @@ function SearchPage() {
         <ul>
           {searchResults.map((result, index) => (
             <li key={index}>
-              <strong>{result.name}</strong> - Ecoscore: {result.score}
+              <strong>{result.name}</strong> - Ecoscore: {result.ecoscore}
             </li>
           ))}
         </ul>

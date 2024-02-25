@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,9 @@ function ProductList() {
       <ul>
         {products.map(product => (
           <li key={product.code}>
-            <strong>{product.name}</strong> - Ecoscore: {product.score}
+            <Link to={`/products/${product.code}`}>
+              <strong>{product.name}</strong> - Ecoscore: {product.score}
+            </Link>
           </li>
         ))}
       </ul>
