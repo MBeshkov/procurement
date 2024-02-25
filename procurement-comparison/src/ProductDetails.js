@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 function ProductDetails() {
   const { code } = useParams();
   const [product, setProduct] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/products/api/${code}`)
@@ -18,6 +19,24 @@ function ProductDetails() {
     return <div>Loading...</div>;
   }
 
+  const handleSearchByCategory = async () => {
+    try {
+      const apiUrl = `https://uk.openfoodfacts.org/api/v2/search?categories_tags=${product.category}&fields=product_name,ecoscore_score&sort_by=ecoscore_score&page_size=3&json=1`;
+
+      const response = await axios.get(apiUrl);
+
+      // Extract relevant information from the API response
+      const results = response.data.products.map(product => ({
+        name: product.product_name,
+        ecoscore: product.ecoscore_score,
+      }));
+
+      setSearchResults(results);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   return (
     <div>
       <h2>Product Details</h2>
@@ -26,7 +45,22 @@ function ProductDetails() {
       <p><strong>Materials:</strong> {product.materials}</p>
       <p><strong>Category:</strong> {product.category}</p>
       {/* Add more details as needed */}
+
+      <button onClick={handleSearchByCategory}>Can I do better?</button>
+
+      <div>
+        <h3>Search Results based on Category</h3>
+        <ul>
+          {searchResults.map((result, index) => (
+            <li key={index}>
+              <strong>{result.name}</strong> - Ecoscore: {result.ecoscore}
+            </li>
+          ))}
+        </ul>
+      </div>
+      
     </div>
+        
   );
 }
 
