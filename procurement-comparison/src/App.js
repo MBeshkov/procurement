@@ -3,6 +3,26 @@ import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
+import './styles.css';
+
+function Home() {
+  return (
+    <div className="container">
+      <div className="home-content">
+        <h1>Let's clean your supply together!</h1>
+        <div className="home-buttons">
+          <Link to="/products">
+            <button className="square-button">All Products</button>
+          </Link>
+          <Link to="/search">
+            <button className="square-button">Search</button>
+          </Link>
+        </div>
+        <div className="background-image"></div>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -13,18 +33,13 @@ function App() {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-            <li>
-              <Link to="/products">All Products</Link>
-            </li>
           </ul>
         </nav>
 
         <hr />
 
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:code" element={<ProductDetails />} />

@@ -1,0 +1,144 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+    color: #ddd;
+  }
+  
+  input {
+    padding: 8px;
+    margin-right: 5px;
+  }
+  
+  button {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .product-details {
+    margin-top: 20px;
+  }
+  
+  .product-details p {
+    margin-bottom: 10px;
+  }
+  
+  .product-details button {
+    margin-top: 10px;
+  }
+  
+  .search-results {
+    margin-top: 20px;
+  }
+  
+  .search-results ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .search-results li {
+    margin-bottom: 10px;
+  }
+
+  .home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .home-button {
+    padding: 15px;
+    margin: 10px;
+    font-size: 18px;
+    background-color: #4caf50; /* Green color, you can customize this */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .home-button:hover {
+    background-color: #45a049; /* Darker green color on hover */
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; /* Align items in a row with space between */
+    align-items: center;
+    padding: 10px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+    color: #ddd;
+  }
+
+  .home-content {
+    text-align: center;
+  }
+  
+  .home-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+  }
+  
+  .square-button {
+    margin: 10px;
+    padding: 30px;
+    width: 200px;
+    font-size: 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .square-button:hover {
+    background-color: #45a049;
+  }
+  
+  .background-image {
+    height: 300px; /* Adjust the height as needed */
+    background: url('backg_lgo.jpg') center/cover no-repeat; /* Replace with your image path */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    margin-top: 20px; /* Adjust as needed */
+  }
