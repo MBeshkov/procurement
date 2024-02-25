@@ -3,16 +3,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './ProductList.css'; // Import the CSS file
+import './ProductList.css'; 
 
 function ProductList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Make a request to your Django API endpoint
-    axios.get('http://localhost:8000/products/api')  // Use the full URL with the /api endpoint
+   
+    axios.get('http://localhost:8000/products/api')  
       .then(response => {
-        // Fetch additional details (including image) for each product
+        
         const productsWithDetails = response.data.map(async product => {
           const apiProduct = await fetchApiProductDetails(product.code);
           return {
@@ -21,7 +21,7 @@ function ProductList() {
           };
         });
 
-        // Wait for all details to be fetched before updating state
+       
         Promise.all(productsWithDetails)
           .then(updatedProducts => setProducts(updatedProducts))
           .catch(error => console.error('Error fetching product details:', error));
@@ -29,7 +29,7 @@ function ProductList() {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  // Function to fetch product details from the API
+
   const fetchApiProductDetails = async (code) => {
     try {
       const apiUrl = `https://uk.openfoodfacts.org/api/v2/product/${code}?fields=image_front_small_url`;

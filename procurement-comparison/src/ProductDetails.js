@@ -9,7 +9,7 @@ function ProductDetails() {
   const { code } = useParams();
   const [product, setProduct] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
-  const [showRecommended, setShowRecommended] = useState(false); // State to track button click
+  const [showRecommended, setShowRecommended] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/products/api/${code}`)

@@ -5,11 +5,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* This will make the container take the full height of the viewport */
+    height: 100vh;
   }
   
 
- /* ProductList.css */
+
 
 * {
     box-sizing: border-box;
@@ -22,54 +22,54 @@
   }
   
   h2 {
-    margin-bottom: 1rem; /* Add some space below the heading */
+    margin-bottom: 1rem; 
   }
   
   ul {
-    list-style: none; /* Remove bullet points */
+    list-style: none; 
     padding: 0;
   }
   
   li {
-    margin-bottom: 1.5rem; /* Increase the space between each product */
-    display: flex; /* Use flexbox for better alignment */
-    align-items: center; /* Center align the items vertically */
+    margin-bottom: 1.5rem; 
+    display: flex; 
+    align-items: center; 
   }
   
-  /* Adjust the size of the product image */
+ 
   li img {
-    max-width: 100px; /* Set the maximum width of the image */
+    max-width: 100px; 
     max-height: 100px;
-    margin-right: 1rem; /* Add space between the image and text */
+    margin-right: 1rem;
   }
   
-  /* Increase the size of the text for each product */
+  
   strong {
-    font-size: 1.2rem; /* Adjust the font size as needed */
+    font-size: 1.2rem; 
   }
   
   li strong::after {
-    content: '\00a0'; /* Add a non-breaking space */
+    content: '\00a0'; 
     display: block;
-    margin-top: 0.5rem; /* Adjust the spacing as needed */
+    margin-top: 0.5rem; 
   }
   li strong::before {
-    content: '\00a0'; /* Add a non-breaking space */
+    content: '\00a0'; 
     display: block;
-    margin-top: 0.5rem; /* Adjust the spacing as needed */
+    margin-top: 0.5rem; 
   }
   
-  /* Optionally, increase the size of Eco-score text */
+ 
   li span {
-    font-size: 1.1rem; /* Adjust the font size as needed */
+    font-size: 1.1rem; 
   }
   li a {
     text-decoration: none;
-    color: inherit; /* Use the color from the parent (default text color) */
+    color: inherit; 
   }
   
-  /* Add styles for the link when hovered */
+
   li a:hover {
-    text-decoration:none; /* Underline on hover, for better indication */
-    color: #007BFF; /* Adjust the color on hover as needed */
+    text-decoration:none; 
+    color: #007BFF; 
   }

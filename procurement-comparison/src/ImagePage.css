@@ -2,23 +2,21 @@
 
 .image-container {
     display: flex;
-    justify-content: center; /* Center the images horizontally */
-    align-items: center; /* Center the images vertically */
-    height: 50vh; /* Make the container take the full height of the viewport */
+    justify-content: center; 
+    align-items: center; 
+    height: 50vh; 
   }
   
   .image {
-    width: 250px; /* Adjust the size of your circular images */
+    width: 250px; 
     height: 250px;
     border-radius: 50%;
     margin: 30px;
     cursor: pointer;
-    transition: filter 0.3s; /* Smooth transition for the darkness effect */
-  
-    /* Add any additional styling for your images */
+    transition: filter 0.3s;
   }
   
   .image.selected {
-    filter: brightness(0.7); /* Darken the selected image */
+    filter: brightness(0.5);
   }
   
