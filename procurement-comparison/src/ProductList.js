@@ -1,5 +1,3 @@
-// In your React app, ProductList.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -8,7 +6,7 @@ function ProductList() {
 
   useEffect(() => {
     // Make a request to your Django API endpoint
-    axios.get('http://localhost:8000/products/api')  // Update the URL with your Django server's address
+    axios.get('http://localhost:8000/products/api')  // Use the full URL with the /api endpoint
       .then(response => setProducts(response.data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);

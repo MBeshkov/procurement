@@ -17,7 +17,8 @@ class ProductListApiView(APIView):
         '''
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        headers = {'Access-Control-Allow-Origin': 'http://localhost:3000'}
+        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
 
     # 2. Create
     def post(self, request, *args, **kwargs):

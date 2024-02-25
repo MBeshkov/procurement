@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'products',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'procurement.urls'
@@ -131,6 +131,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Replace with your React app's address
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Replace with your React app's address
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
